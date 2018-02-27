@@ -104,15 +104,20 @@ def test_repr():
     """
     from attrdict.dictionary import AttrDict
 
-    assert_equals(repr(AttrDict()), "AttrDict({})")
-    assert_equals(repr(AttrDict({'foo': 'bar'})), "AttrDict({'foo': 'bar'})")
-    assert_equals(
-        repr(AttrDict({1: {'foo': 'bar'}})), "AttrDict({1: {'foo': 'bar'}})"
-    )
-    assert_equals(
-        repr(AttrDict({1: AttrDict({'foo': 'bar'})})),
-        "AttrDict({1: AttrDict({'foo': 'bar'})})"
-    )
+    assert_equals(repr(AttrDict()),
+                  "AttrDict({})"
+                  )
+
+    assert_equals(repr(AttrDict({'foo': 'bar'})),
+                  "AttrDict({'foo': 'bar'})"
+                  )
+    assert_equals(repr(AttrDict({1: {'foo': 'bar'}})),
+                  "AttrDict({1: {'foo': 'bar'}})"
+                  )
+    assert_equals(repr(AttrDict({1: AttrDict({'foo': 'bar'})})),
+                  "AttrDict({1: AttrDict({'foo': 'bar'})})"
+                  )
+
 
 def test_repr_subclass():
     """
@@ -124,15 +129,19 @@ def test_repr_subclass():
     class MySubClass(AttrDict):
         pass
 
-    assert_equals(repr(MySubClass()), "MySubClass({})")
-    assert_equals(repr(MySubClass({'foo': 'bar'})), "MySubClass({'foo': 'bar'})")
-    assert_equals(
-        repr(MySubClass({1: {'foo': 'bar'}})), "MySubClass({1: {'foo': 'bar'}})"
-    )
-    assert_equals(
-        repr(MySubClass({1: MySubClass({'foo': 'bar'})})),
-        "MySubClass({1: MySubClass({'foo': 'bar'})})"
-    )
+    assert_equals(repr(MySubClass()),
+                  "MySubClass({})"
+                  )
+    assert_equals(repr(MySubClass({'foo': 'bar'})),
+                  "MySubClass({'foo': 'bar'})"
+                  )
+    assert_equals(repr(MySubClass({1: {'foo': 'bar'}})),
+                  "MySubClass({1: {'foo': 'bar'}})"
+                  )
+    assert_equals(repr(MySubClass({1: MySubClass({'foo': 'bar'})})),
+                  "MySubClass({1: MySubClass({'foo': 'bar'})})"
+                  )
+
 
 if not PY2:
     def test_has_key():

@@ -51,6 +51,7 @@ def test_repr():
         )
     )
 
+
 def test_repr_subclass():
     """
     repr(AttrDefault)
