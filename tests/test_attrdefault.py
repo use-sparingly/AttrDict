@@ -50,3 +50,29 @@ def test_repr():
             ("AttrDefault(<", " 'list'>, True, {'foo': 'bar'})")
         )
     )
+
+def test_repr_subclass():
+    """
+    repr(AttrDefault)
+    """
+    from attrdict.default import AttrDefault
+
+    class MySubClass(AttrDefault):
+        pass
+
+    assert_equals(repr(MySubClass(None)), "MySubClass(None, False, {})")
+
+    # list's repr changes between python 2 and python 3
+    type_or_class = 'type' if PY2 else 'class'
+
+    assert_equals(
+        repr(MySubClass(list)),
+        type_or_class.join(("MySubClass(<", " 'list'>, False, {})"))
+    )
+
+    assert_equals(
+        repr(MySubClass(list, {'foo': 'bar'}, pass_key=True)),
+        type_or_class.join(
+            ("MySubClass(<", " 'list'>, True, {'foo': 'bar'})")
+        )
+    )
